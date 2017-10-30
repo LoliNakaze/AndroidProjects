@@ -41,8 +41,6 @@ public class MyClockView extends View {
         float angle = (float) (Math.PI / 2.0 - Math.toRadians(value));
         float x = (float) (((float) center.x) + length * Math.cos(angle));
         float y = (float) (((float) center.y) - length * Math.sin(angle));
-        if (length == _LONG)
-           System.out.println("Time : " + value + "\nangle : " + angle + " - (" + x + ", " + y + ")");
         c.drawLine(center.x, center.y, x, y, paint);
     }
 
@@ -57,8 +55,8 @@ public class MyClockView extends View {
         _SHORT = _LONG / 2;
         c.drawCircle(center.x, center.y, _LONG + 10, p);
 
-        drawTick(c, _LONG, (elapsedTime % 60 + 1) * 6, p);
-        drawTick(c, _SHORT, elapsedTime / 10 + 1, p);
+        drawTick(c, _LONG, (elapsedTime % 60) * 6, p);
+        drawTick(c, _SHORT, elapsedTime / 10, p);
 
         super.onDraw(c);
     }
